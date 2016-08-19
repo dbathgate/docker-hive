@@ -27,7 +27,10 @@ RUN chmod +x /start-hive.sh \
  && mysql -u root <<< "flush privileges;" \
  && $HADOOP_HOME/bin/hadoop fs -mkdir /tmp/hive \
  && $HADOOP_HOME/bin/hadoop fs -chown hive:hive /tmp/hive \
- && $HADOOP_HOME/bin/hadoop fs -chmod +w /tmp/hive 
+ && $HADOOP_HOME/bin/hadoop fs -chmod +w /tmp/hive \
+ && $HADOOP_HOME/bin/hadoop fs -mkdir -p /user/hive/warehouse \
+ && $HADOOP_HOME/bin/hadoop fs -chown hive:hive /user/hive/warehouse \
+ && $HADOOP_HOME/bin/hadoop fs -chmod +w /user/hive/warehouse
 
 EXPOSE 10000
 
