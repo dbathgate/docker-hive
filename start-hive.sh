@@ -11,4 +11,6 @@ cd $HIVE_HOME/scripts/metastore/upgrade/mysql/; mysql -u root metastore < hive-s
 
 mysql -u root <<< "CREATE USER 'hiveuser'@'%' IDENTIFIED BY 'hivepassword'; "
 mysql -u root <<< "GRANT all on *.* to 'hiveuser'@localhost identified by 'hivepassword';"
-mysql -u root <<< "flush privileges;
+mysql -u root <<< "flush privileges;"
+
+$HIVE_HOME/bin/hiveserver2 --hiveconf hive.root.logger=INFO,console

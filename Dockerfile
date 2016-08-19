@@ -13,10 +13,10 @@ RUN curl http://apache.claz.org/hive/hive-1.1.1/apache-hive-1.1.1-bin.tar.gz -s 
  && curl https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/1.4.6/mariadb-java-client-1.4.6.jar -s -o $HIVE_HOME/lib/mariadb-connector-java.jar
 
 ADD hive-site.xml $HIVE_HOME/conf/
-ADD bootstrap-mysql.sh /
+ADD start-hive.sh /
 
-RUN chmod +x /bootstrap-mysql.sh && /bootstrap-mysql.sh
+RUN chmod +x /start-hive.sh 
 
 EXPOSE 10000
 
-CMD ["$HIVE_HOME/bin/hiveserver2", "--hiveconf", "hive.root.logger=INFO,console"]
+CMD ["/start-hive.sh"]
